@@ -110,7 +110,7 @@ Sort product price (low to high)
     Submit Credentials
     # first product price should be $29.99
     Product Price Should Be     ${PRICE1}
-    # sort by name asc
+    # sort by price asc
     Sort By Price Low to High
     # first product price should be $7.99
     Product Price Should Be     ${PRICE2}
@@ -128,7 +128,7 @@ Sort product price (high to low)
     Submit Credentials
     # first product price should be $29.99
     Product Price Should Be     ${PRICE1}
-    # sort by name asc
+    # sort by price desc
     Sort By Price High to Low
     # first product price should be $49.99
     Product Price Should Be     ${PRICE3}
