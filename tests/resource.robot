@@ -16,6 +16,11 @@ ${VALID PASSWORD}       secret_sauce
 ${INVALID PASSWORD}     SecretSauce
 ${LOGIN URL}            https://${SERVER}/
 ${HOME URL}             https://${SERVER}/inventory.html
+${PRODUCT1}             Sauce Labs Backpack
+${PRODUCT2}             Test.allTheThings() T-Shirt (Red)
+${PRICE1}               $29.99
+${PRICE2}               $7.99
+${PRICE3}               $49.99
 
 *** Keywords ***
 Open Browser To Login Page
@@ -43,3 +48,23 @@ Input Pass
 
 Submit Credentials
     Click Button    login-button
+
+Product Should Be
+    [Arguments]     ${product}
+    Element Text Should Be      xpath:/html/body/div/div/div/div[2]/div/div/div/div[1]/div[2]/div[1]/a/div  ${product}
+
+Sort By Name A-Z
+    Select From List By Value   css:*[data-test="product_sort_container"]   az
+
+Sort By Name Z-A
+    Select From List By Value   css:*[data-test="product_sort_container"]   za
+
+Sort By Price Low to High
+    Select From List By Value   css:*[data-test="product_sort_container"]   lohi
+
+Sort By Price High TO Low
+    Select From List By Value   css:*[data-test="product_sort_container"]   hilo
+
+Product Price Should Be
+    [Arguments]     ${price}
+    Element Text Should Be      xpath:/html/body/div/div/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div  ${price}
